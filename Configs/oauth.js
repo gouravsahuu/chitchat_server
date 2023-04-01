@@ -13,6 +13,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
   },
   function(accessToken, refreshToken, profile, cb) {
+    console.log(profile);
     // const user_email = profile.__json.email;
     //create user by user model
     //password : uuidv4();
@@ -28,7 +29,7 @@ passport.use(new GoogleStrategy({
       "picture" : profile._json.picture,
       "sub" : profile._json.sub,
     }
-    // console.log(profile);
+    
     return cb(null,user);
   }
 ));
