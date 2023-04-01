@@ -8,9 +8,10 @@ const jwt = require("jsonwebtoken");
 const tokenkey = process.env.tokenkey;
 const reftokenkey = process.env.reftokenkey;
 const path = require("path");
+const cors = require("cors");
 
 app.use(express.json());
-
+app.use(cors());
 app.use("/user",userRoute);
 
 app.get("/",(req,res) => {
