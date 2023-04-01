@@ -30,7 +30,7 @@ passport.use(new GoogleStrategy({
     //   "sub" : profile._json.sub,
     // }
     
-    return cb(null,profile);
+    return cb(null,"user");
   }
 ));
 
