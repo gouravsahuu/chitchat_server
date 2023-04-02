@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
   },
   function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
+//     console.log(profile);
     // const user_email = profile.__json.email;
     //create user by user model
     //password : uuidv4();
