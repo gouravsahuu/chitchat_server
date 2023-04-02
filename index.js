@@ -38,9 +38,18 @@ app.get('/auth/google/callback',
     // Successful authentication, redirect home.
     // return value will be received here in req.user
     // console.log(req.user);
+//      const user = {
+//       "email" : profile._json.email,
+//       "email_verified" : profile._json.email_verified,
+//       "family_name" : profile._json.family_name,
+//       "given_name" : profile._json.given_name,
+//       "name" : profile._json.name,
+//       "picture" : profile._json.picture,
+//       "sub" : profile._json.sub,
+//     }
 
     //check if user already exists
-    const userExist = await UserModel.find({email:req.user.email});
+    const userExist = await UserModel.find({email:req.user._json.email});
     
     if(userExist.length > 0){
         // console.log("User already exists");
@@ -53,7 +62,7 @@ app.get('/auth/google/callback',
         // res.send({"message":"Login Successfull","token":token,"refresh_token":reftoken});
     }
     else{
-        const new_user = new UserModel(req.user);
+        const new_user = new UserModel(req.user._json);
         await new_user.save();
         // console.log("User created");
         // res.redirect('/');
