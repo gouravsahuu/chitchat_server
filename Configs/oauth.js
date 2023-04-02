@@ -14,16 +14,17 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
   },
   function(accessToken, refreshToken, profile, cb) {
+     return cb(null,profile);
 //     console.log(profile);
     // const user_email = profile.__json.email;
     //create user by user model
     //password : uuidv4();
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
+//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//       return cb(err, user);
+//     });
    
     
-//     return cb(null,profile);
+   
   }
 ));
 
