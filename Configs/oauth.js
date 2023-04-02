@@ -20,17 +20,17 @@ passport.use(new GoogleStrategy({
     // User.findOrCreate({ googleId: profile.id }, function (err, user) {
     //   return cb(err, user);
     // });
-    // const user = {
-    //   "email" : profile._json.email,
-    //   "email_verified" : profile._json.email_verified,
-    //   "family_name" : profile._json.family_name,
-    //   "given_name" : profile._json.given_name,
-    //   "name" : profile._json.name,
-    //   "picture" : profile._json.picture,
-    //   "sub" : profile._json.sub,
-    // }
+    const user = {
+      "email" : profile._json.email,
+      "email_verified" : profile._json.email_verified,
+      "family_name" : profile._json.family_name,
+      "given_name" : profile._json.given_name,
+      "name" : profile._json.name,
+      "picture" : profile._json.picture,
+      "sub" : profile._json.sub,
+    }
     
-    return cb(null,"user");
+    return cb(null,user);
   }
 ));
 
