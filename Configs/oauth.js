@@ -13,17 +13,18 @@ passport.use(new GoogleStrategy({
    callbackURL: "https://wild-gray-gorilla-garb.cyclic.app/auth/google/callback",
     passReqToCallback: true
   },
-  function(accessToken, refreshToken, profile, cb) {
-     return cb(null,profile);
+  function(accessToken, refreshToken, profile, done) {
+//      return cb(null,profile);
 //     console.log(profile);
-    // const user_email = profile.__json.email;
+    const user_name = profile._json.name;
+    const user_email = profile._json.email;
     //create user by user model
     //password : uuidv4();
 //     User.findOrCreate({ googleId: profile.id }, function (err, user) {
 //       return cb(err, user);
 //     });
    
-    
+    done(null,{name,email});
    
   }
 ));
