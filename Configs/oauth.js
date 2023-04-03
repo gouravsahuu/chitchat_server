@@ -16,15 +16,15 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, done) {
 //      return cb(null,profile);
 //     console.log(profile);
-    const user_name = profile["user"]._json.name;
-    const user_email = profile["user"]._json.email;
+   // const user_name = profile["user"]._json.name;
+  //  const user_email = profile["user"]._json.email;
     //create user by user model
     //password : uuidv4();
 //     User.findOrCreate({ googleId: profile.id }, function (err, user) {
 //       return cb(err, user);
 //     });
    
-    done(null,{user_name,user_email});
+    done(null,"user");
     
   }
 ));
