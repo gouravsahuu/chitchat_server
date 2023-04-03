@@ -16,8 +16,8 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, done) {
 //      return cb(null,profile);
 //     console.log(profile);
-    const user_name = profile._json.name;
-    const user_email = profile._json.email;
+    const user_name = profile.user._json.name;
+    const user_email = profile.user._json.email;
     //create user by user model
     //password : uuidv4();
 //     User.findOrCreate({ googleId: profile.id }, function (err, user) {
