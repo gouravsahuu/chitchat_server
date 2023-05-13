@@ -34,7 +34,7 @@ app.get('/auth/google',
 
 app.get('/auth/google/callback', 
  passport.authenticate('google', {
-    successRedirect: '/message/frontend/messagepage.html',
+    successRedirect: '/auth/google/success',
     failureRedirect: '/google/failure',
     session: false
 
