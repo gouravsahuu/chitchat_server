@@ -19,9 +19,8 @@ app.get("/",(req,res) => {
     res.send("Homepage")
 })
 
-app.get("/message/frontend/messagepage.html",(req,res) => {
-    console.log(__dirname);
-    // res.send("hii")
+app.get("/auth/google/success",(req,res) => {
+    
 
    res.sendFile(path.join(__dirname,"../message/frontend/messagepage.html"));
 })
