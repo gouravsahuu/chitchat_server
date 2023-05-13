@@ -9,8 +9,7 @@ const {UserModel} = require("../Models/user.model")
 passport.use(new GoogleStrategy({
     clientID: client_id,
     clientSecret: client_key,
-   callbackURL: "https://wild-gray-gorilla-garb.cyclic.app/auth/google/callback",
-    passReqToCallback: true
+   callbackURL: "https://wild-gray-gorilla-garb.cyclic.app/auth/google/callback"
   },
  async function(accessToken, refreshToken, profile, done) {
 
