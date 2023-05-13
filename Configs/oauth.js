@@ -3,8 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require("passport");
 const client_id = process.env.googleClientId;
 const client_key = process.env.googleClientKey;
-
-
+const {UserModel} = require("../Models/user.model")
 
 
 passport.use(new GoogleStrategy({
@@ -13,19 +12,18 @@ passport.use(new GoogleStrategy({
    callbackURL: "https://wild-gray-gorilla-garb.cyclic.app/auth/google/callback",
     passReqToCallback: true
   },
-  function(accessToken, refreshToken, profile, done) {
-//      return cb(null,profile);
-//     console.log(profile);
-   // const user_name = profile["user"]._json.name;
-  //  const user_email = profile["user"]._json.email;
-    //create user by user model
-    //password : uuidv4();
-//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
+ async function(accessToken, refreshToken, profile, done) {
+
+   let email = profile.emails[0].value;
+      let udata = await UserModel.findOne({ email });
+      if (udata) {
+        return done(null, udata);
+      }
    
-    done(null,"user");
-    
+      const user = new UserModel(profile._json);
+      await user.save();
+      return done(null, user);
+      console.log(profile)
   }
 ));
 
