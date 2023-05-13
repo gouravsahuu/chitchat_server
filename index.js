@@ -22,8 +22,8 @@ app.get("/",(req,res) => {
 
 app.get("/auth/google/success",(req,res) => {
     
-
-   res.sendFile(path.join(__dirname,"/Frontend/messagepage.html"));
+res.redirect("https://whatsapplikeclone.netlify.app/messagepage.html")
+   //res.sendFile(path.join(__dirname,"/Frontend/messagepage.html"));
 })
 
 
